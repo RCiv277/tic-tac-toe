@@ -1,0 +1,31 @@
+body {
+  display: block;
+  background-color: darkred;
+}
+h1{
+  text-align:center;
+  border: 5px;
+  font-size: 70px;
+  background-color: firebrick;
+  border-color: silver;
+  border-style:double;
+  color:silver;
+}
+.grid {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  border: 50px , darkslategray;
+}
+.squareButton {
+  width: 30%;
+  height: 30%;
+  border-radius: 20px;
+  background-color: darkred;
+  color: darkslategray;
+}
