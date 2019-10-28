@@ -55,9 +55,7 @@ var arry = [[0,0,0],[0,0,0],[0,0,0]]
         
         // Global Variables: eso es un pecado
         
-        var turnOrder = 1                                                                          // True = Player One! False = Player Two!
-        var playerOneWin = false
-        var playerTwoWin = false  
+        var turnOrder = 1                                                                          // True = Player One! False = Player Two! 
         
         // Objects Main Array: Using an alignment access(outdated info efficency wise; i did a good) for positional reference IE:
         //   LG (0) NG (1) CG (2)
@@ -91,8 +89,9 @@ var arry = [[0,0,0],[0,0,0],[0,0,0]]
             
             turnOrder === 1 ? turnOrder = -1 : turnOrder = 1;
             
-            //event.target.style.backgroundImage =  (turnOrder === 1 ? " url(./image/shaz.jpg)" :"url(./image/and.jpg)" ;)
-            event.target.style.backgroundColor = turnOrder === 1 ? 'blue': 'red';
+            event.target.style.backgroundImage = turnOrder === -1 ? " url(./image/shaz.jpg)" :"url(./image/and.jpg)" ;
+            //event.target.style.backgroundColor = turnOrder === 1 ? 'blue': 'red';
+            event.target.removeEventListener('click', reactToClick)
             if(wchBtnClck == 0){
                 arry[0][0] = turnOrder
                 tree0()
@@ -140,14 +139,13 @@ var arry = [[0,0,0],[0,0,0],[0,0,0]]
     for (let i = 0; i < 9; i++){
         let element = document.getElementById(`${i}`)
         element.addEventListener('click' , reactToClick)}
+        
+    
     
     //Notes/ Bugs
     // Css Change button class to reflect inputs
     
     
-    function testing(whut){
-        console.log('hi')
-    }
     
         
         function didSomeoneWin(){(winPossibP1 || winPossibP2) ? true: false ;}
@@ -158,48 +156,47 @@ var arry = [[0,0,0],[0,0,0],[0,0,0]]
             console.log(arry)
             if (arry[0][0] == -1){
               if (arry[1][0] == -1){
-              arry[2][0] == -1 ? console.log('winner') : 0;
+              arry[2][0] == -1 ? playerOneWin() : 0;
               } 
               else if (arry[0][1] == -1) {
-                arry[0][2] == -1 ? console.log('winner') : 0;
+                arry[0][2] == -1 ? playerOneWin() : 0;
               }
           
               else if (arry[1][1] == -1) {
-                arry[2][2]== -1 ? console.log('winner') : 0;
+                arry[2][2]== -1 ? playerOneWin() : 0;
                 }
-              else {console.log('No win 1')}
               }
             else{
               if (arry[1][0] == 1){
-              arry[2][0] == 1 ? console.log('winner') : 0;
+              arry[2][0] == 1 ? playerTwoWin() : 0;
               } 
               else if (arry[0][1] == 1) {
-                arry[0][2] == 1 ? console.log('winner') : 0;
+                arry[0][2] == 1 ? playerTwoWin() : 0;
               }
           
               else if (arry[1][1] == 1) {
-                arry[2][2]== 1 ? console.log('winner') : 0;
+                arry[2][2]== 1 ? playerTwoWin() : 0;
                 }
-              else{console.log('No win -1')}
             }
-          }
+            }
+          
           function tree1(){
             console.log(arry)
             if (arry[1][0] == -1){
               if (arry[0][0] == -1){
-              arry[2][0] == -1 ? console.log('winner') : 0;
+              arry[2][0] == -1 ? playerOneWin() : 0;
               } 
               else if (arry[1][1] == -1) {
-                arry[1][2] == -1 ? console.log('winner') : 0;
+                arry[1][2] == -1 ? playerOneWin() : 0;
               }
               else {console.log('No win 1')}
               }
             else{
               if (arry[0][0] == 1){
-              arry[2][0] == 1 ? console.log('winner') : 0;
+              arry[2][0] == 1 ? playerTwoWin() : 0;
               } 
-              else if (arry[1,1] == 1) {
-                arry[1][2] == 1 ? console.log('winner') : 0;
+              else if (arry[1][1] == 1) {
+                arry[1][2] == 1 ? playerTwoWin() : 0;
               }
               else{console.log('No win -1')}
             }
@@ -209,29 +206,28 @@ var arry = [[0,0,0],[0,0,0],[0,0,0]]
             console.log(arry)
             if (arry[0][0] == -1){
               if (arry[1][0] == -1){
-              arry[2][0] == -1 ? console.log('winner') : 0;
+              arry[2][0] == -1 ? playerOneWin() : 0;
               } 
               else if (arry[0][1] == -1) {
-                arry[0][2] == -1 ? console.log('winner') : 0;
+                arry[0][2] == -1 ? playerOneWin() : 0;
               }
           
               else if (arry[1][1] == -1) {
-                arry[2][2]== -1 ? console.log('winner') : 0;
+                arry[2][2]== -1 ? playerOneWin() : 0;
                 }
               else {console.log('No win 1')}
               }
             else{
-              if (arry[1][0] == 1){
-              arry[2][0] == 1 ? console.log('winner') : 0;
+              if (arry[1][1] == 1){
+              arry[2][0] == 1 ? playerTwoWin() : 0;
               } 
               else if (arry[0][1] == 1 ){
-                arry[0][2] == 1 ? console.log('winner') : 0;
+                arry[0][0] == 1 ? playerTwoWin() : 0;
               }
           
-              else if (arry[1][1] == 1) {
-                arry[2][2]== 1 ? console.log('winner') : 0;
+              else if (arry[1][2] == 1) {
+                arry[2][2]== 1 ? playerTwoWin() : 0;
                 }
-              else{console.log('No win -1')}
             }
           }
 
@@ -240,18 +236,18 @@ function tree3(){
     console.log(arry)
     if (arry[1][0] == -1){
         if (arry[2][0] == -1){
-            arry[0][0] == -1 ? console.log('winner') : 0;
+            arry[0][0] == -1 ? playerOneWin() : 0;
         }
         else if (arry[1][1] == -1){
-            arry[2][1] == -1 ? console.log('winner') : 0;
+            arry[1][2] == -1 ? playerOneWin() : 0;
         }
     }
     else{
         if (arry[2][0] == 1){
-            arry[0][0] == 1 ? console.log('winner') : 0;
+            arry[0][0] == 1 ? playerTwoWin() : 0;
         }
         else if (arry[1][1] == 1){
-            arry[2][1] == 1 ? console.log('winner') : 0;
+            arry[1][2] == 1 ? playerTwoWin() : 0;
         }
     }
 
@@ -260,16 +256,16 @@ function tree4(){
     console.log(arry)
     if (arry[1][1] == -1){
       if (arry[0][0] == -1){
-      arry[2][2] == -1 ? console.log('winner') : 0;
+      arry[2][2] == -1 ? playerOneWin() : 0;
       } 
       else if (arry[0][1] == -1) {
-        arry[2][1] == -1 ? console.log('winner') : 0;
+        arry[2][1] == -1 ? playerOneWin() : 0;
       }
       else if (arry[2][0] == -1) {
-        arry[0][2] == -1 ? console.log('winner') : 0;
+        arry[0][2] == -1 ? playerOneWin() : 0;
       }
       else if (arry[1][0] == -1) {
-        arry[1][2] == -1 ? console.log('winner') : 0;
+        arry[1][2] == -1 ? playerOneWin() : 0;
       }
       else {console.log('No win 1')}
       }
@@ -277,16 +273,15 @@ function tree4(){
       if (arry[0][0] == 1){
         arry[2][2] == 1 ? winner : 0;
       } 
-      else if (arry[0][1] = 1) {
-            arry[2][1] == 1 ? console.log('winner') : 0;
+      else if (arry[0][1] == 1) {
+            arry[2][1] == 1 ? playerTwoWin() : 0;
       }
-      else if (arry[2][0] = 1) {
-            arry[0][2] == 1 ? console.log('winner') : 0;
+      else if (arry[2][0] == 1) {
+            arry[0][2] == 1 ? playerTwoWin() : 0;
       }
-      else if (arry[1][0] = 1) {
-            arry[1][2] == 1 ? console.log('winner') : 0;
+      else if (arry[1][0] == 1) {
+            arry[1][2] == 1 ? playerTwoWin() : 0;
       }
-      else{console.log('No win -1')}
     }
   }
 
@@ -294,43 +289,44 @@ function tree4(){
     console.log(arry)
     if (arry[1][2] == -1){
       if (arry[0][2] == -1){
-          arry[2][2] == -1 ? 0 : 0;
+          arry[2][2] == -1 ? playerOneWin() : 0;
       }
-      else if (arry[1,1] == -1){
-          arry[1][0] == -1? 0 : 0;
+      else if (arry[1][1] == -1){
+          arry[1][0] == -1 ? playerOneWin() : 0;
       }
     }
     else{
-      if (arry[0][2] == -1){
-          arry[2][2] == -1 ? 0 : 0;
-      }
-      else if (arry[1,1] == -1){
-          arry[1][0] == -1? 0 : 0;
-      }
+        if (arry[0][2] == 1){
+            arry[2][2] == 1 ? playerTwoWin() : 0;
+        }
+        else if (arry[1][1] == 1){
+            arry[1][0] == 1 ? playerTwoWin() : 0;
+        }
     }
 }
+
 function tree6(){ 
     console.log(arry)
     if (arry[2][0] == -1){
         if (arry[1][0] == -1){
-            arry[0][0] == -1 ? console.log('winner') : 0;
+            arry[0][0] == -1 ? playerOneWin() : 0;
         }
         else if (arry[1][1] == -1){
-            arry[0][2] == -1 ? console.log('winner') : 0;
+            arry[0][2] == -1 ? playerOneWin() : 0;
         }
         else if (arry[1][2] == -1){
-            arry[2][2] == -1 ? console.log('winner') : 0;
+            arry[2][2] == -1 ? playerOneWin() : 0;
         }
     }
     else{
         if (arry[0][2] == 1){
-            arry[2][2] == 1 ? console.log('winner') : 0;
+            arry[2][2] == 1 ? playerTwoWin() : 0;
         }
         else if (arry[1][1] == 1){
-            arry[1][0] == 1 ? console.log('winner') : 0;
+            arry[1][0] == 1 ? playerTwoWin() : 0;
         }
         else if (arry[1][2] == 1){
-            arry[2][2] == 1 ? console.log('winner') : 0;
+            arry[2][2] == 1 ? playerTwoWin() : 0;
         }
     }
 }
@@ -339,18 +335,18 @@ function tree7(){
     console.log(arry)
     if (arry[2][1] == -1){
       if (arry[0][1] == -1){
-      arry[1][1] == -1 ? console.log('winner') : 0;
+      arry[1][1] == -1 ? playerOneWin() : 0;
       } 
-      else if (arry[2][0] = -1) {
-        arry[2][2] == -1 ? console.log('winner') : 0;
+      else if (arry[2][0] == -1) {
+        arry[2][2] == -1 ? playerOneWin() : 0;
       }
     }
     else{
-      if (arry[0][1] == -1){
-      arry[1][1] == -1 ? console.log('winner') : 0;
+      if (arry[0][1] == 1){
+      arry[1][1] == 1 ? playerTwoWin() : 0;
       } 
-      else if (arry[2][0] == -1) {
-          arry[2][2] == -1 ? console.log('winner') : 0;
+      else if (arry[2][0] == 1) {
+          arry[2][2] == 1 ? playerTwoWin() : 0;
       }
     }
   }
@@ -359,28 +355,52 @@ function tree8(){
     console.log(arry)
     if (arry[2][2] == -1){
       if (arry[1][2] == -1){
-        arry[0][2] == -1 ? console.log('winner') : 0;
+        arry[0][2] == -1 ? playerOneWin() : 0;
       } 
       else if (arry[0][0] == -1) {
-        arry[1][1] == -1 ? console.log('winner') : 0;
+        arry[1][1] == -1 ? playerOneWin() : 0;
       }
       else if (arry[2][0] == -1) {
-        arry[2][1]== -1 ? console.log('winner') : 0;
+        arry[2][1]== -1 ? playerOneWin() : 0;
       }
       else {console.log('No win 1')}
       }
     else{
       if (arry[1][2] == 1){
-        arry[0][2] == 1 ? console.log('winner') : 0;
+        arry[0][2] == 1 ? playerTwoWin() : 0;
         } 
       else if (arry[0][0] == 1) {
-        arry[1][1] == 1 ? console.log('winner') : 0;
+        arry[1][1] == 1 ? playerTwoWin() : 0;
         }
       else if (arry[2][0] == 1) {
-        arry[2][1]== 1 ? console.log('winner') : 0;
-        }
-      else if (arry[1][1] == 1) {
-        arry[2][2]== 1 ? console.log('winner') : 0;
+        arry[2][1]== 1 ? playerTwoWin() : 0;
         }
     }  
 }     
+" url(./image/shaz.jpg)"
+
+
+function playerOneWin(nothing){
+    arry.forEach(function(element, i){
+        arry[i].forEach(function(ele, t){
+            console.log(`${arry[i][t]}`)
+            //arry[i][t] = -1 ? document.getElementById(`${((i+1) * 3) + t}`).style.backgroundImage = 'url(./image/winshaz.jpg)': 0;
+            //arry[i][t] == -1 ? document.getElementById(`${((i * 3) + t)}`).style.backgroundColor = 'green': 0;
+            arry[i][t] == -1 ? document.getElementById(`${((i * 3) + t)}`).style.backgroundImage = 'url(./image/shazwin.jpg)': 0;
+        })
+    });
+
+}
+
+function playerTwoWin(nothing){
+    console.log('Winner')
+    arry.forEach(function(element, i){
+        arry[i].forEach(function(ele, t){
+            console.log(`${arry[i][t]}`)
+            //arry[i][t] = -1 ? document.getElementById(`${((i+1) * 3) + t}`).style.backgroundImage = 'url(./image/winshaz.jpg)': 0;
+            //arry[i][t] == 1 ? document.getElementById(`${((i * 3) + t)}`).style.backgroundColor = 'green': 0;
+            arry[i][t] == 1 ? document.getElementById(`${((i * 3) + t)}`).style.backgroundImage = 'url(./image/andwin.jpg)': 0;
+        })
+    });
+
+}
