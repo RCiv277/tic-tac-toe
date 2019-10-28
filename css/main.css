@@ -24,8 +24,15 @@ h1{
 }
 .squareButton {
   width: 30%;
-  height: 30%;
+  height: 40%;
   border-radius: 20px;
   background-color: darkred;
   color: darkslategray;
+  object-fit: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
+/*background-image: url(../image/and.jpg);
+
+
+
