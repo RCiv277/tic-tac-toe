@@ -63,8 +63,9 @@ var arry = [[0,0,0],[0,0,0],[0,0,0]]
         //   LE (6) NE (7) CE (8)
         
         function startGame(assnPlayer){        
-            turnOrder = 1
-            arry = [[0,0,0][0,0,0][0,0,0]]
+            arry = [[0,0,0]
+                    [0,0,0]
+                    [0,0,0]]
             
         };
         
