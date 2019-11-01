@@ -1,72 +1,24 @@
 // Constants / Codeblocks / Checkers       
 
-var newPstnArry = []
-//var pstnArryOg = ['0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8']
-startGame()
+let reset = document.getElementById('reset')
+console.log(reset)
+reset.addEventListener('click' , startGame)
 
 var arry = [[0,0,0],[0,0,0],[0,0,0]]
 
 
+// Global Variables: eso es un pecado
+startGame()
+var turnOrder = 1                                                                          // True = Player One! False = Player Two! 
+function startGame(){        
+  for (let i = 0; i < 9; i++){
+    let element = document.getElementById(`${i}`)
+    element.style.backgroundImage = 'none'
+    element.addEventListener('click' , reactToClick)}
+    arry = [[0,0,0],
+    [0,0,0],
+    [0,0,0]]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*function winPossibP1() {return(
-    (newPstnArry[0].PlayerOne && newPstnArry[1].PlayerOne && newPstnArry[3].PlayerOne) ||
-    (newPstnArry[3].PlayerOne && newPstnArry[4].PlayerOne && newPstnArry[5].PlayerOne) ||
-    (newPstnArry[6].PlayerOne && newPstnArry[7].PlayerOne && newPstnArry[8].PlayerOne) ||
-    (newPstnArry[0].PlayerOne && newPstnArry[3].PlayerOne && newPstnArry[6].PlayerOne) ||
-    (newPstnArry[1].PlayerOne && newPstnArry[4].PlayerOne && newPstnArry[7].PlayerOne) ||
-    (newPstnArry[2].PlayerOne && newPstnArry[5].PlayerOne && newPstnArry[8].PlayerOne) ||
-    (newPstnArry[0].PlayerOne && newPstnArry[4].PlayerOne && newPstnArry[8].PlayerOne) ||
-    (newPstnArry[6].PlayerOne && newPstnArry[4].PlayerOne && newPstnArry[2].PlayerOne))}
-    
-    function winPossibP2() {return(
-        (newPstnArry[0].PlayerTwo && newPstnArry[1].PlayerTwo && newPstnArry[3].PlayerTwo) ||
-        (newPstnArry[3].PlayerTwo && newPstnArry[4].PlayerTwo && newPstnArry[5].PlayerTwo) ||
-        (newPstnArry[6].PlayerTwo && newPstnArry[7].PlayerTwo && newPstnArry[8].PlayerTwo) ||
-        (newPstnArry[0].PlayerTwo && newPstnArry[3].PlayerTwo && newPstnArry[6].PlayerTwo) ||
-        (newPstnArry[1].PlayerTwo && newPstnArry[4].PlayerTwo && newPstnArry[7].PlayerTwo) ||
-        (newPstnArry[2].PlayerTwo && newPstnArry[5].PlayerTwo && newPstnArry[8].PlayerTwo) ||
-        (newPstnArry[0].PlayerTwo && newPstnArry[4].PlayerTwo && newPstnArry[8].PlayerTwo) ||
-        (newPstnArry[6].PlayerTwo && newPstnArry[4].PlayerTwo && newPstnArry[2].PlayerTwo))}
-        
-        function didSomeoneWin(){winPossibP1() || winPossibP2() ? true: false ;} */
-        
-        // Global Variables: eso es un pecado
-        
-        var turnOrder = 1                                                                          // True = Player One! False = Player Two! 
-        
-        // Objects Main Array: Using an alignment access(outdated info efficency wise; i did a good) for positional reference IE:
-        //   LG (0) NG (1) CG (2)
-        //   LN (3) TN (4) CN (5)
-        //   LE (6) NE (7) CE (8)
-        
-        function startGame(assnPlayer){        
-            arry = [[0,0,0]
-                    [0,0,0]
-                    [0,0,0]]
-            
         };
         
         
@@ -82,16 +34,14 @@ var arry = [[0,0,0],[0,0,0],[0,0,0]]
             didSomeoneWin() ? true:
             false; //if true display winner prompt  , if false change turn prompt and image
         }*/
-        function reactToClick(elem){
-            /*    event.target = display picture (turnOrder ?  shaz pic  0: 0 andrew pic ;)
-            winConditions() */
+        function reactToClick(){
             
             let wchBtnClck = event.target.id
             
             turnOrder === 1 ? turnOrder = -1 : turnOrder = 1;
             
             event.target.style.backgroundImage = turnOrder === -1 ? " url(./image/shaz.jpg)" :"url(./image/and.jpg)" ;
-            //event.target.style.backgroundColor = turnOrder === 1 ? 'blue': 'red';
+            event.target.style.objectFit = 'cover';
             event.target.removeEventListener('click', reactToClick)
             if(wchBtnClck == 0){
                 arry[0][0] = turnOrder
@@ -137,9 +87,6 @@ var arry = [[0,0,0],[0,0,0],[0,0,0]]
     //Functions related to dom/html/event listeners
     //event target
     
-    for (let i = 0; i < 9; i++){
-        let element = document.getElementById(`${i}`)
-        element.addEventListener('click' , reactToClick)}
         
     
     
@@ -378,15 +325,13 @@ function tree8(){
         }
     }  
 }     
-" url(./image/shaz.jpg)"
-
 
 function playerOneWin(nothing){
+  for (let i = 0; i < 9; i++){
+    let element = document.getElementById(`${i}`)
+    element.removeEventListener('click' , reactToClick)}
     arry.forEach(function(element, i){
         arry[i].forEach(function(ele, t){
-            console.log(`${arry[i][t]}`)
-            //arry[i][t] = -1 ? document.getElementById(`${((i+1) * 3) + t}`).style.backgroundImage = 'url(./image/winshaz.jpg)': 0;
-            //arry[i][t] == -1 ? document.getElementById(`${((i * 3) + t)}`).style.backgroundColor = 'green': 0;
             arry[i][t] == -1 ? document.getElementById(`${((i * 3) + t)}`).style.backgroundImage = 'url(./image/shazwin.jpg)': 0;
         })
     });
@@ -394,12 +339,11 @@ function playerOneWin(nothing){
 }
 
 function playerTwoWin(nothing){
-    console.log('Winner')
+  for (let i = 0; i < 9; i++){
+    let element = document.getElementById(`${i}`)
+    element.removeEventListener('click' , reactToClick)}
     arry.forEach(function(element, i){
         arry[i].forEach(function(ele, t){
-            console.log(`${arry[i][t]}`)
-            //arry[i][t] = -1 ? document.getElementById(`${((i+1) * 3) + t}`).style.backgroundImage = 'url(./image/winshaz.jpg)': 0;
-            //arry[i][t] == 1 ? document.getElementById(`${((i * 3) + t)}`).style.backgroundColor = 'green': 0;
             arry[i][t] == 1 ? document.getElementById(`${((i * 3) + t)}`).style.backgroundImage = 'url(./image/andwin.jpg)': 0;
         })
     });
